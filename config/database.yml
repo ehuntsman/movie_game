@@ -1,18 +1,13 @@
-<% branch = Git.open(".").current_branch %>
-
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+---
 
 development:
-  <<: *default
-  database: movie_game_development-<%= branch %>
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_development?') %>
 
 test:
-  <<: *default
-  database: movie_game_test-<%= branch %>
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_test?') %>
+
+staging:
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_staging?') %>
 
 production:
-  <<: *default
-  database: movie_game_development-<%= branch %>
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_production?') %>
