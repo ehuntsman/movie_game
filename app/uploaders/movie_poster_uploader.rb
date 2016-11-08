@@ -10,17 +10,17 @@ class MoviePosterUploader < CarrierWave::Uploader::Base
   # storage :file
   # storage :fog
 
-  if Rails.env.production?
-    storage    :aws
-    aws_bucket "com-wavetronix-boxoffice"
-    aws_acl    :public_read
-  elseif Rails.env.staging?
-    storage    :aws
-    aws_bucket "com-wavetronix-staging-boxoffice"
-    aws_acl    :public_read
-  else
+  # if Rails.env.production?
+  #   storage    :aws
+  #   aws_bucket "com-wavetronix-boxoffice"
+  #   aws_acl    :public_read
+  # elseif Rails.env.staging?
+  #   storage    :aws
+  #   aws_bucket "com-wavetronix-staging-boxoffice"
+  #   aws_acl    :public_read
+  # else
     storage :file
-  end
+  # end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
